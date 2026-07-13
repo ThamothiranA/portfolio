@@ -33,10 +33,11 @@
             height: 100vh;
             width: 100vw;
             display: flex;
+            flex-direction: row;
         }
 
         /* ----------------------------------
-           LEFT HALF: AVATAR STAGE (40% Width)
+           LEFT HALF: AVATAR STAGE
         ------------------------------------- */
         .avatar-stage {
             width: 40vw;
@@ -49,27 +50,29 @@
             position: relative;
             border-right: 1px solid var(--border-color);
             z-index: 5;
+            padding: 20px;
         }
 
         /* Creative Thought Bubble */
         .thought-bubble {
             position: absolute;
-            top: 10%;
+            top: 12%;
             background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-primary);
-            padding: 16px 24px;
-            border-radius: 24px;
-            font-size: 0.9rem;
+            padding: 14px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 500;
-            max-width: 320px;
+            max-width: 280px;
             text-align: center;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             opacity: 0;
             transform: translateY(15px);
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10;
         }
 
         .thought-bubble::after {
@@ -88,8 +91,9 @@
         /* Avatar Container Graphics */
         .avatar-wrapper {
             position: relative;
-            width: 380px;
-            height: 380px;
+            width: 100%;
+            max-width: 350px;
+            aspect-ratio: 1/1;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -101,7 +105,7 @@
             height: 80%;
             background: var(--accent-cyan);
             border-radius: 50%;
-            filter: blur(80px);
+            filter: blur(60px);
             opacity: 0.15;
             transition: background 0.6s ease;
         }
@@ -115,29 +119,35 @@
         }
 
         /* ----------------------------------
-           RIGHT HALF: CONTENT STAGE (60% Width)
+           RIGHT HALF: CONTENT STAGE
         ------------------------------------- */
         .content-stage {
             width: 60vw;
             height: 100vh;
             position: relative;
-            padding: 8% 10% 8% 8%;
+            padding: 6% 8% 12% 6%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             background: linear-gradient(180deg, #0f172a 0%, #070a12 100%);
         }
 
+        .slide-container {
+            position: relative;
+            width: 100%;
+            height: 65vh;
+        }
+
         .slide {
             position: absolute;
-            width: 82%;
-            max-height: 70vh;
+            width: 100%;
+            max-height: 100%;
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
             pointer-events: none;
             transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
             overflow-y: auto;
-            padding-right: 20px;
+            padding-right: 15px;
         }
 
         .slide.active {
@@ -147,60 +157,54 @@
         }
 
         /* Typography */
-        h1 { font-size: 4rem; font-weight: 700; letter-spacing: -0.05em; margin-bottom: 8px; color: var(--text-primary); }
+        h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.04em; margin-bottom: 8px; color: var(--text-primary); line-height: 1.1; }
         h1 span { color: var(--accent-cyan); }
-        h2 { font-size: 2rem; font-weight: 600; margin-bottom: 30px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 12px; }
-        h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 6px; color: var(--text-primary); }
+        h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 25px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 12px; }
+        h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 6px; color: var(--text-primary); }
         
-        .subtitle { font-size: 1.4rem; color: var(--text-secondary); margin-bottom: 30px; font-weight: 300; }
-        p { color: var(--text-secondary); line-height: 1.75; font-size: 1rem; margin-bottom: 20px; }
+        .subtitle { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 25px; font-weight: 300; }
+        p { color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem; margin-bottom: 15px; }
 
         /* Tech Badges */
-        .badge-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+        .badge-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
         .tag {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             color: #cbd5e1;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 8px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        .tag:hover {
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-            background: rgba(6, 182, 212, 0.05);
         }
 
         /* Timeline Items */
-        .timeline { position: relative; border-left: 2px solid var(--border-color); padding-left: 30px; }
-        .timeline-item { position: relative; margin-bottom: 40px; }
+        .timeline { position: relative; border-left: 2px solid var(--border-color); padding-left: 24px; }
+        .timeline-item { position: relative; margin-bottom: 30px; }
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -37px;
+            left: -31px;
             top: 6px;
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: #334155;
             border: 2px solid var(--bg-main);
         }
         .timeline-item.active-job::before {
             background: var(--accent-emerald);
-            box-shadow: 0 0 12px var(--accent-emerald);
+            box-shadow: 0 0 10px var(--accent-emerald);
         }
-        .time-stamp { font-size: 0.85rem; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
-        .company-name { font-size: 1rem; color: var(--accent-cyan); font-weight: 500; margin-bottom: 12px; }
+        .time-stamp { font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; letter-spacing: 0.05em; margin-bottom: 4px; }
+        .company-name { font-size: 0.95rem; color: var(--accent-cyan); font-weight: 500; margin-bottom: 10px; }
 
-        /* Full-page Control Interfaces */
+        /* Navigation Controllers */
         .controls {
             position: absolute;
-            bottom: 8%;
-            left: 8%;
+            bottom: 6%;
+            left: 6%;
             display: flex;
-            gap: 16px;
+            gap: 14px;
             z-index: 10;
         }
 
@@ -208,14 +212,14 @@
             background: transparent;
             color: var(--text-secondary);
             border: 1px solid var(--border-color);
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
             cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -223,23 +227,131 @@
             background: var(--text-primary);
             color: var(--bg-main);
             border-color: var(--text-primary);
-            transform: translateY(-2px);
         }
         
         .btn:disabled {
-            opacity: 0.25;
+            opacity: 0.2;
             cursor: not-allowed;
         }
 
-        /* Custom Scrollbar for slide text container */
         .slide::-webkit-scrollbar { width: 4px; }
         .slide::-webkit-scrollbar-track { background: transparent; }
         .slide::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+        /* ----------------------------------
+           📱 MOBILE & TABLET RE-ARCHITECTURE
+        ------------------------------------- */
+        @media (max-width: 900px) {
+            body {
+                flex-direction: column;
+                overflow-y: auto;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .avatar-stage {
+                width: 100vw;
+                height: auto;
+                min-height: 280px;
+                padding: 20px 15px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .thought-bubble {
+                position: relative;
+                top: 0;
+                margin-bottom: 20px;
+                opacity: 1 !important; /* Force visibility rules over JS on mobile */
+                transform: none !important;
+                max-width: 90vw;
+                width: 100%;
+            }
+
+            .thought-bubble::after {
+                bottom: -8px;
+                border-width: 8px 8px 0;
+            }
+
+            .avatar-wrapper {
+                position: relative;
+                width: 140px;
+                height: 140px;
+                margin-top: 0;
+            }
+
+            .avatar-glow {
+                filter: blur(25px);
+            }
+
+            .content-stage {
+                width: 100vw;
+                height: auto;
+                min-height: 50vh;
+                padding: 30px 20px 100px 20px; 
+                background: #0f172a;
+            }
+
+            .slide-container {
+                height: auto;
+                min-height: 300px;
+            }
+
+            .slide {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                max-height: none;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(15px);
+                transition: all 0.5s ease;
+                padding-right: 0;
+            }
+
+            .slide.active {
+                position: relative;
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            h1 { font-size: 2.2rem; text-align: center; }
+            .subtitle { font-size: 1.05rem; text-align: center; margin-bottom: 20px; }
+            h2 { font-size: 1.4rem; margin-bottom: 15px; }
+            h3 { font-size: 1.05rem; }
+            p { font-size: 0.9rem; line-height: 1.6; }
+
+            .controls {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100vw;
+                background: linear-gradient(to top, #070a12 70%, transparent);
+                padding: 20px 0;
+                margin: 0;
+                justify-content: center;
+                gap: 40px;
+                box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+            }
+            
+            .btn {
+                width: 50px;
+                height: 50px;
+                background: #141b2d;
+                border-color: rgba(255,255,255,0.15);
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- LEFT COMPONENT: STAGE AREA -->
+    <!-- TOP COMPONENT: STAGE AREA -->
     <div class="avatar-stage">
         <div class="thought-bubble" id="thoughtBubble">Init configuration...</div>
         <div class="avatar-wrapper">
@@ -248,85 +360,87 @@
         </div>
     </div>
 
-    <!-- RIGHT COMPONENT: EXPANSIVE CONTENT VIEWPORT -->
+    <!-- BOTTOM COMPONENT: EXPANSIVE CONTENT VIEWPORT -->
     <div class="content-stage">
         
-        <!-- Slide 1: Welcome Overview -->
-        <div class="slide active" data-pose="1.png" data-glow="#06b6d4" data-thought="Hi there! Welcome to my system workspace. Let's look around.">
-            <h1>Thamothiran <span>A</span></h1>
-            <div class="subtitle">Full Stack Python Developer & Software Engineer</div>
-            <p>I build enterprise-grade web backends and microservices architectures. Specializing in optimizing database designs, modern data pipelines, and responsive software environments.</p>
-            <p style="font-size: 0.9rem; color: var(--accent-cyan);"><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> Chennai, Tamil Nadu</p>
-        </div>
-
-        <!-- Slide 2: Tech Specs -->
-        <div class="slide" data-pose="3.png" data-glow="#f43f5e" data-thought="Always structuring code paths for optimal throughput. What's your stack?">
-            <h2><i class="fa-solid fa-layer-group" style="color:var(--accent-cyan)"></i> Technical Architecture</h2>
-            
-            <h3>Core Engineering & Pipeline Orchestration</h3>
-            <div class="badge-grid">
-                <span class="tag">Python</span><span class="tag">Apache Airflow</span><span class="tag">Django (DRF)</span><span class="tag">Flask</span><span class="tag">JWT Security</span>
+        <div class="slide-container">
+            <!-- Slide 1: Welcome Overview -->
+            <div class="slide active" data-pose="1.png" data-glow="#06b6d4" data-thought="Hi there! Welcome to my system workspace. Let's look around.">
+                <h1>Thamothiran <span>A</span></h1>
+                <div class="subtitle">Full Stack Python Developer & Software Engineer</div>
+                <p>I build enterprise-grade web backends and microservices architectures. Specializing in optimizing database designs, modern data pipelines, and responsive software environments.</p>
+                <p style="font-size: 0.85rem; color: var(--accent-cyan); text-align: inherit;"><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> Chennai, Tamil Nadu</p>
             </div>
 
-            <h3>Interactive Interfaces</h3>
-            <div class="badge-grid">
-                <span class="tag">JavaScript</span><span class="tag">jQuery</span><span class="tag">Angular</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">HTML5 / CSS3</span>
-            </div>
-
-            <h3>Databases & Infrastructure</h3>
-            <div class="badge-grid">
-                <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">Git / GitHub</span><span class="tag">Linux Core</span><span class="tag">Postman Engine</span>
-            </div>
-        </div>
-
-        <!-- Slide 3: Practical Timeline Track -->
-        <div class="slide" data-pose="2.png" data-glow="#10b981" data-thought="Here is my production footprint and professional tracking.">
-            <h2><i class="fa-solid fa-briefcase" style="color:var(--accent-emerald)"></i> Professional Journey</h2>
-            
-            <div class="timeline">
-                <div class="timeline-item active-job">
-                    <div class="time-stamp">Oct 2024 — Present</div>
-                    <h3>Python Developer & Software Engineer</h3>
-                    <div class="company-name">Neurealm Private Limited</div>
-                    <p>Driving core engineering workflows, writing complex procedural scripts, and building **Airflow Automation** models to manage scale dependencies cleanly.</p>
+            <!-- Slide 2: Tech Specs -->
+            <div class="slide" data-pose="3.png" data-glow="#f43f5e" data-thought="Always structuring code paths for optimal throughput. What's your stack?">
+                <h2><i class="fa-solid fa-layer-group" style="color:var(--accent-cyan)"></i> Technical Toolkit</h2>
+                
+                <h3>Core Engineering & Pipelines</h3>
+                <div class="badge-grid">
+                    <span class="tag">Python</span><span class="tag">Apache Airflow</span><span class="tag">Django (DRF)</span><span class="tag">Flask</span><span class="tag">JWT Security</span>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="time-stamp">Apr 2023 — Oct 2024</div>
-                    <h3>Full Stack Developer</h3>
-                    <div class="company-name">Trigun Infolabs Pvt Ltd</div>
-                    <p>Constructed robust RESTful API endpoints via Django REST Framework and optimized Angular admin modules for multi-tiered Logistics BI tools and complex ERP solutions.</p>
+                <h3>Interactive Interfaces</h3>
+                <div class="badge-grid">
+                    <span class="tag">JavaScript</span><span class="tag">jQuery</span><span class="tag">Angular</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">HTML5 / CSS3</span>
+                </div>
+
+                <h3>Databases & Architecture</h3>
+                <div class="badge-grid">
+                    <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">Git / GitHub</span><span class="tag">Linux Core</span>
+                </div>
+            </div>
+
+            <!-- Slide 3: Practical Timeline Track -->
+            <div class="slide" data-pose="2.png" data-glow="#10b981" data-thought="Here is my production footprint and professional tracking.">
+                <h2><i class="fa-solid fa-briefcase" style="color:var(--accent-emerald)"></i> Professional Journey</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item active-job">
+                        <div class="time-stamp">Oct 2024 — Present</div>
+                        <h3>Python Developer & Software Engineer</h3>
+                        <div class="company-name">Neurealm Private Limited</div>
+                        <p>Driving core engineering workflows, writing complex procedural scripts, and building **Airflow Automation** models to manage scale dependencies cleanly.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="time-stamp">Apr 2023 — Oct 2024</div>
+                        <h3>Full Stack Developer</h3>
+                        <div class="company-name">Trigun Infolabs Pvt Ltd</div>
+                        <p>Constructed robust RESTful API endpoints via Django REST Framework and optimized Angular admin modules for multi-tiered Logistics BI tools and complex ERP solutions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Projects Showcase -->
+            <div class="slide" data-pose="4.png" data-glow="#a855f7" data-thought="I focus on structural integrity and real-time execution speeds.">
+                <h2><i class="fa-solid fa-code-branch" style="color:#a855f7"></i> Implementations</h2>
+                
+                <div style="margin-bottom: 20px;">
+                    <h3>Warehouse Handling & BI Ecosystem</h3>
+                    <p>Designed data flows for asset tracking systems handling multi-branch storage metrics. Standardized database operations over transactional PostgreSQL engines.</p>
+                </div>
+                
+                <div>
+                    <h3>Manufacturing ERP Suite</h3>
+                    <p>Engineered shift deployment automations, asset scheduling pipelines, and productivity matrix calculators tracking resource metrics.</p>
+                </div>
+            </div>
+
+            <!-- Slide 5: Contact Gateway -->
+            <div class="slide" data-pose="5.png" data-glow="#eab308" data-thought="Let's build scalable pipelines or design your next system logic!">
+                <h2><i class="fa-solid fa-envelope-open-text" style="color:#eab308"></i> Secure a Connection</h2>
+                <p>I am available for technical discussions surrounding pipeline automation engineering, system design upgrades, or scalable web architectures.</p>
+                
+                <div style="margin-top: 20px; font-size: 1rem; display: grid; gap: 10px;">
+                    <div><i class="fa-solid fa-envelope" style="color:var(--accent-cyan); margin-right:12px; width:15px;"></i> <a href="mailto:thamuart24@gmail.com" style="color:inherit; text-decoration:none;">thamuart24@gmail.com</a></div>
+                    <div><i class="fa-solid fa-phone" style="color:var(--accent-cyan); margin-right:12px; width:15px;"></i> +91 9597506641</div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 4: Projects Showcase -->
-        <div class="slide" data-pose="4.png" data-glow="#a855f7" data-thought="I focus on structural integrity and real-time execution speeds.">
-            <h2><i class="fa-solid fa-code-branch" style="color:#a855f7"></i> Operational Implementations</h2>
-            
-            <div style="margin-bottom: 25px;">
-                <h3>Warehouse Handling & Business Intelligence Ecosystem</h3>
-                <p>Designed data flows for asset tracking systems handling multi-branch storage metrics. Standardized database operations over highly transactional PostgreSQL engines.</p>
-            </div>
-            
-            <div>
-                <h3>Manufacturing ERP Suite</h3>
-                <p>Engineered shift deployment automations, asset scheduling pipelines, and productivity matrix calculators tracking resource metrics.</p>
-            </div>
-        </div>
-
-        <!-- Slide 5: Contact Gateway -->
-        <div class="slide" data-pose="5.png" data-glow="#eab308" data-thought="Let's build scalable pipelines or design your next system logic!">
-            <h2><i class="fa-solid fa-envelope-open-text" style="color:#eab308"></i> Secure a Connection</h2>
-            <p>I am available for technical discussions surrounding pipeline automation engineering, system design upgrades, or scalable web architectures.</p>
-            
-            <div style="margin-top: 30px; font-size: 1.15rem; display: grid; gap: 15px;">
-                <div><i class="fa-solid fa-envelope" style="color:var(--accent-cyan); margin-right:15px; width:20px;"></i> <a href="mailto:thamuart24@gmail.com" style="color:inherit; text-decoration:none;">thamuart24@gmail.com</a></div>
-                <div><i class="fa-solid fa-phone" style="color:var(--accent-cyan); margin-right:15px; width:20px;"></i> +91 9597506641</div>
-            </div>
-        </div>
-
-        <!-- PAGE CONTROLS BUTTON ASSEMBLY -->
+        <!-- PAGE CONTROLS ASSEMBLY -->
         <div class="controls">
             <button class="btn" id="backBtn" disabled><i class="fa-solid fa-arrow-left"></i></button>
             <button class="btn" id="nextBtn"><i class="fa-solid fa-arrow-right"></i></button>
@@ -340,34 +454,37 @@
         $(document).ready(function() {
             const slides = $('.slide');
             let currentIdx = 0;
+            const isMobile = window.matchMedia("(max-width: 900px)");
 
             function updateSlide(index) {
-                // Handle text container animations
                 slides.removeClass('active');
                 const activeSlide = slides.eq(index);
                 activeSlide.addClass('active');
 
-                // Read structural metadata
+                // Read Structural Metadata Setup
                 const poseSrc = activeSlide.data('pose');
                 const glowColor = activeSlide.data('glow');
                 const thoughtText = activeSlide.data('thought');
 
-                // Transform visual properties smoothly
-                $('#avatarImg').css('transform', 'scale(0.8) translateY(20px)');
-                
+                // Image processing swaps safely
+                $('#avatarImg').css('transform', 'scale(0.8)');
                 setTimeout(() => {
                     $('#avatarImg').attr('src', poseSrc); 
                     $('#avatarGlow').css('background', glowColor);
-                    $('#avatarImg').css('transform', 'scale(1) translateY(0)');
-                }, 250);
+                    $('#avatarImg').css('transform', 'scale(1)');
+                }, 150);
 
-                // Thought frame execution loop
-                $('#thoughtBubble').css({'opacity': '0', 'transform': 'translateY(15px)'});
-                setTimeout(() => {
-                    $('#thoughtBubble').text(thoughtText).css({'opacity': '1', 'transform': 'translateY(0)'});
-                }, 350);
+                // Thought box assigning strings loops
+                if (isMobile.matches) {
+                    $('#thoughtBubble').text(thoughtText);
+                } else {
+                    $('#thoughtBubble').css({'opacity': '0', 'transform': 'translateY(10px)'});
+                    setTimeout(() => {
+                        $('#thoughtBubble').text(thoughtText).css({'opacity': '1', 'transform': 'translateY(0)'});
+                    }, 250);
+                }
 
-                // Lock out state handling limits
+                // Disabling configurations state assignment
                 $('#backBtn').prop('disabled', index === 0);
                 $('#nextBtn').prop('disabled', index === slides.length - 1);
             }
@@ -386,7 +503,15 @@
                 }
             });
 
-            // Run baseline initial configurations
+            // Re-render layout checks dynamically if orientation shifts
+            let resizeTimer;
+            $(window).resize(function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    location.reload();
+                }, 250);
+            });
+
             updateSlide(currentIdx);
         });
     </script>
